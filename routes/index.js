@@ -3,13 +3,10 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Guest = mongoose.model('Guest');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
 module.exports = router;
 
+
+/* API - start */
 router.param('guest', function(req, res, next, id) {
   var query = Guest.findById(id);
 
@@ -24,7 +21,7 @@ router.param('guest', function(req, res, next, id) {
   });
 });
 
-router.get('/guests', function(req, res, next) {
+router.get('/api/guests', function(req, res, next) {
   Guest.find(function(err, guests){
     if(err){ return next(err); }
 
@@ -32,7 +29,7 @@ router.get('/guests', function(req, res, next) {
   });
 });
 
-router.post('/guests', function(req, res, next) {
+router.post('/api/guests', function(req, res, next) {
   var guest = new Guest(req.body);
 
   guest.save(function(err, guest){
@@ -42,11 +39,11 @@ router.post('/guests', function(req, res, next) {
   });
 });
 
-router.get('/guests/:guest', function(req, res) {
+router.get('/api/guests/:guest', function(req, res) {
   res.json(req.guest);
 });
 
-router.put('/guests/:guest', function(req, res, next) {
+router.put('/api/guests/:guest', function(req, res, next) {
   var body = req.body,
       responded = body.responded,
       allowed = req.guest.allowed,
@@ -61,5 +58,16 @@ router.put('/guests/:guest', function(req, res, next) {
     if(error) return next(error);
 
     res.json(guest);
+  });
+});
+/* API - end */
+
+/* GET home page. */
+router.get('*', function(req, res, next) {
+  res.render('index', {
+    title: 'RSVP | Rob & Jackie',
+    /*guests: Guest.find(function(err, guests) {
+     return guests;
+     })*/
   });
 });
