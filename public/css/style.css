@@ -1,8 +1,46 @@
+@font-face { font-family: MrsEaves; src: url('../fonts/MrsEavesRoman.otf'); }
+@font-face { font-family: MrsEaves; font-weight: bold; src: url('../fonts/MrsEavesRoman.otf'); }
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 5%;
+  font: 14px "MrsEaves", "Times New Roman", "Times-Roman", Times, serif;
+  color: rgb(163, 128,63);
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(163, 128,63);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding-top: 4vh;
+}
+
+h4:first-child {
+  padding-top: 0;
+}
+
+p {
+  margin: 0px;
+  padding-top: 2vh;
+}
+
+footer {
+  margin: 0px auto;
+  width: 90vh;
+}
+
+.container {
+  height: 90vh;
+  width: 90vh;
+  background-color: rgb(248,250,249);
+  border: 4vh solid rgb(157,123, 49);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.inner-container {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
