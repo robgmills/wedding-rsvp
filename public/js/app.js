@@ -1,0 +1,1 @@
+angular.module('rsvp', ['ui.router', 'rsvp-routes']);
