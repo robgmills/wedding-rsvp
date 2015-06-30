@@ -1,0 +1,25 @@
+{
+    "name": "wedding-rsvp",
+    "version": "1.0.0",
+    "dependencies": {
+        "bootstrap": "latest",
+        "font-awesome": "latest",
+        "animate.css": "latest",
+        "angular": "latest",
+        "angular-animate": "latest",
+        "angular-ui-router": "latest"
+    },
+    "homepage": "https://github.com/robgmills/wedding-rsvp",
+    "authors": [
+        "Rob Mills <me@robgmills.com>"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "public/libs",
+        "test",
+        "tests"
+    ]
+}
