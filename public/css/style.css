@@ -2,7 +2,7 @@
 @font-face { font-family: MrsEaves; font-weight: bold; src: url('../fonts/MrsEavesRoman.otf'); }
 
 body {
-  padding: 5%;
+  padding: 4vh;
   font: 14px "MrsEaves", "Times New Roman", "Times-Roman", Times, serif;
   color: rgb(163, 128,63);
 }
