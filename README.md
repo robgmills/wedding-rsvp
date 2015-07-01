@@ -23,6 +23,13 @@ On a Mac, using MongoDB installed through Homebrew:
 mongod --config /usr/local/etc/mongod.conf
 ```
 
+### Configure App->DB Connection
+The application uses environment variables to configure connections to dependencies like MongoDB for storing data.  
+Simply set the `DB_URL` environment variable before starting the application:
+```sh
+export DB_URL=mongodb://localhost/news
+```
+
 ### Start the application
 ```sh
 npm start

@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 require('./models/Guests');
-mongoose.connect('mongodb://localhost/news');
+
+mongoose.connect(process.env.DB_URL);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
