@@ -6,6 +6,10 @@ angular.module('rsvp-routes', []).config(['$stateProvider', '$urlRouterProvider'
             url: '',
             templateUrl: 'views/home.html'
         })
+        .state('error', {
+            url: '/error',
+            templateUrl: 'views/error.html'
+        })
         .state('rsvp', {
             url: '/rsvp',
             templateUrl: 'views/rsvp/rsvp-index.html',
