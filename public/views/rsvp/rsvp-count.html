@@ -1,3 +1,5 @@
-<label for="count">HOW MANY PEOPLE ARE IN YOUR PARTY?</label>
-<select class="form-control" name="count" id="count" ng-model="formData.count"
-        ng-options="count for count in countOptions()" />
+<form id="rsvp-form" ng-submit="next('rsvp.confirm')">
+    <label for="count">HOW MANY PEOPLE ARE IN YOUR PARTY?</label>
+    <select class="form-control" name="count" id="count" ng-model="formData.count"
+        ng-options="count for count in countOptions()" ng-change="next('rsvp.confirm')"/>
+</form>

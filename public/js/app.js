@@ -1,1 +1,1 @@
-angular.module('rsvp', ['ui.router', 'rsvp-routes', 'rsvp-controller']);
+angular.module('rsvp', ['ui.router', 'rsvp-routes', 'rsvp.controller', 'invite.service']);

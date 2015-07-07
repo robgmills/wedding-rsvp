@@ -1,18 +1,30 @@
-angular.module('rsvp-controller', []).controller('RsvpController', function($scope, $state) {
+angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$state','InviteService', function($scope, $state, InviteService) {
 
-    $scope.steps = ['rsvp.last','rsvp.first','rsvp.coming','rsvp.count','rsvp.confirm','rsvp.thanks'];
-    $scope.currentStep = 0;
+    $state.transitionTo('rsvp.last');
 
-    $state.transitionTo($scope.steps[$scope.currentStep]);
+    $scope.invite = {};
+    $scope.formData = {};
 
-    // To be replaced with the record from MongoDB
-    $scope.formData = {
-        'allowed': 3
-    };
+    $scope.search = function() {
+        InviteService
+            .search($scope.formData.last, $scope.formData.first)
+            .then(function(data, status, headers){
 
-    $scope.next = function() {
-        $scope.currentStep++;
-        $state.transitionTo($scope.steps[$scope.currentStep]);
+                if( data.length > 1 ) {
+                    alert("We seem to be having a problem!  Please email rsvp@robandjax.com for help.");
+                }
+
+                $scope.invite = results[0];
+
+            },function(data, status, headers){
+                alert("We seem to be having a problem!  Please email rsvp@robandjax.com for help.");
+            });
+
+        $state.transitionTo('rsvp.coming');
+    }
+
+    $scope.next = function(next) {
+        $state.transitionTo(next);
     };
 
     $scope.countOptions = function() {
@@ -22,4 +34,4 @@ angular.module('rsvp-controller', []).controller('RsvpController', function($sco
         }
         return options;
     }
-});
+}]);

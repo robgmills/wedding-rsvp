@@ -1,15 +1,17 @@
-<label>WILL YOU JOIN US?</label>
-<ul>
-    <li>
-        <label>
-            <input type="radio" ng-model="formData.response" value="yes">
-            Yes
-        </label>
-    </li>
-    <li>
-        <label>
-            <input type="radio" ng-model="formData.response" value="no">
-            No
-        </label>
-    </li>
-</ul>
+<form id="rsvp-form">
+    <label>WILL YOU JOIN US?</label>
+    <ul>
+        <li>
+            <label>
+                <input type="radio" ng-model="formData.response" value="yes" ng-change="next('rsvp.count')">
+                Yes
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" ng-model="formData.response" value="no" ng-change="next('rsvp.confirm')">
+                No
+            </label>
+        </li>
+    </ul>
+</form>
