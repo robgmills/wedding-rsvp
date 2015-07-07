@@ -1,4 +1,5 @@
-angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$state','InviteService', function($scope, $state, InviteService) {
+angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$state','InviteService',
+    function($scope, $state, InviteService) {
 
     $state.transitionTo('rsvp.last');
 
@@ -9,18 +10,12 @@ angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$s
         InviteService
             .search($scope.formData.last, $scope.formData.first)
             .then(function(data, status, headers){
-
-                if( data.length > 1 ) {
-                    alert("We seem to be having a problem!  Please email rsvp@robandjax.com for help.");
-                }
-
-                $scope.invite = results[0];
+                $scope.invite = data;
+                $state.transitionTo('rsvp.coming');
 
             },function(data, status, headers){
-                alert("We seem to be having a problem!  Please email rsvp@robandjax.com for help.");
+                $state.transitionTo('error');
             });
-
-        $state.transitionTo('rsvp.coming');
     }
 
     $scope.next = function(next) {
@@ -29,7 +24,7 @@ angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$s
 
     $scope.countOptions = function() {
         const options = [];
-        for(var i = 1; i<=$scope.formData.allowed; i++) {
+        for(var i = 1; i<=$scope.invite.guests.length; i++) {
             options.push(i);
         }
         return options;

@@ -1,26 +1,38 @@
 angular.module('invite.service', []).factory('InviteService', ['$http', '$q', function($http, $q) {
-    return {
-        list : function() {
-            const deferred = $q.defer();
-            console.log('InviteService#list - start');
+    var baseUrl = '/api/invites';
 
-            $http.get('/api/invites')
+    return {
+        api : function(url, method, params, data) {
+            const deferred = $q.defer();
+
+            const req = {
+                url: url,
+                method: method,
+                params: params,
+                data: data
+            };
+
+            $http(req)
                 .success(function(data, status, headers){
-                    console.log(data);
-                    deferred.resolve(data);
-                    console.log(status);
-                    console.log(headers);
+                    deferred.resolve(data, status, headers);
                 })
                 .error(function(data, status, headers) {
                     deferred.reject(data, status, headers);
                 });
 
-            console.log('InviteService#list - end');
             return deferred.promise;
         },
 
+        list : function() {
+            var res = this.api(baseUrl, 'GET');
+            return res;
+        },
+
         search : function(last, first) {
-            throw Error('Not yet implemented!');
+            const params = {last: last, first: first};
+            const url = baseUrl + '/search'
+            var res = this.api(url, 'GET', params);
+            return res;
         },
 
         get : function(id) {
