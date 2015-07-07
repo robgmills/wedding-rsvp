@@ -27,6 +27,14 @@ router.get('/invites', function(req, res, next) {
   });
 });
 
+router.get('/invites/search', function(req, res, next) {
+  const lastRegex = new RegExp(req.query.last, 'i');
+  const firstRegex = new RegExp(req.query.first, 'i');
+  Invite.findOne({'guests.last': lastRegex, 'guests.first': firstRegex}, function(err,found){
+    res.json(found);
+  });
+});
+
 router.post('/invites', function(req, res, next) {
   var invite = new Invite(req.body);
 
