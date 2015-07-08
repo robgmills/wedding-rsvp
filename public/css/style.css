@@ -29,6 +29,10 @@ footer {
   width: 90vh;
 }
 
+input {
+  text-align: center;
+}
+
 .container {
   height: 90vh;
   width: 90vh;

@@ -21,16 +21,24 @@ router.param('invite', function(req, res, next, id) {
 
 router.get('/api/invites', function(req, res, next) {
   Invite.find(function(err, invites){
-    if(err){ return next(err); }
+    if (err) { return next(err); }
 
     res.json(invites);
   });
 });
 
 router.get('/api/invites/search', function(req, res, next) {
-  const lastRegex = new RegExp(req.query.last, 'i');
-  const firstRegex = new RegExp(req.query.first, 'i');
+  const last = req.query.last,
+      first = req.query.first,
+      lastRegex = new RegExp(req.query.last, 'i'),
+      firstRegex = new RegExp(req.query.first, 'i');
+
   Invite.findOne({'guests.last': lastRegex, 'guests.first': firstRegex}, function(err,found){
+    if (err) { return next(err); }
+    if (!found) {
+      return res.status(404).json({message: 'No invite found for ' + first + ' ' + last});
+    }
+
     res.json(found);
   });
 });

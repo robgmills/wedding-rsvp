@@ -9,12 +9,19 @@ angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$s
     $scope.search = function() {
         InviteService
             .search($scope.formData.last, $scope.formData.first)
-            .then(function(data, status, headers){
-                $scope.invite = data;
+            .then(function(resp){
+                $scope.invite = resp.data;
                 $state.transitionTo('rsvp.coming');
 
-            }, function(data, status, headers) {
-                $state.transitionTo('error');
+            }, function(resp) {
+                switch(resp.status) {
+                    case 404:
+                        $state.transitionTo('rsvp.notfound');
+                        break;
+                    default:
+                        $state.transitionTo('error');
+                }
+
             });
     };
 
@@ -33,9 +40,9 @@ angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$s
     $scope.submit = function() {
         InviteService
             .update($scope.invite)
-            .then(function(data, status, headers){
+            .then(function(resp){
                 $state.transitionTo('rsvp.thanks');
-            }, function(data, status, headers) {
+            }, function(resp) {
                 $state.transitionTo('error');
             });
     }

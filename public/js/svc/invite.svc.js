@@ -14,10 +14,20 @@ angular.module('invite.service', []).factory('InviteService', ['$http', '$q', fu
 
             $http(req)
                 .success(function(data, status, headers){
-                    deferred.resolve(data, status, headers);
+                    const resp = {
+                        data: data,
+                        status: status,
+                        headers: headers
+                    }
+                    deferred.resolve(resp);
                 })
                 .error(function(data, status, headers) {
-                    deferred.reject(data, status, headers);
+                    const resp = {
+                        data: data,
+                        status: status,
+                        headers: headers
+                    }
+                    deferred.reject(resp);
                 });
 
             return deferred.promise;
