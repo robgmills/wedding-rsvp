@@ -8,9 +8,9 @@ module.exports = router;
 router.param('invite', function(req, res, next, id) {
   var query = Invite.findById(id);
 
-  query.exec(function (err, guest){
+  query.exec(function (err, invite){
     if (err) { return next(err); }
-    if (!guest) {
+    if (!invite) {
       return res.status(404).json({message: 'Invite with id ' + id + ' can not be found.'});
     }
 
@@ -52,7 +52,7 @@ router.get('/invites/:invite', function(req, res) {
 router.put('/invites/:invite', function(req, res, next) {
   var body = req.body,
       responded = body.responded,
-      allowed = req.invite.allowed,
+      allowed = req.invite.guests.length,
       id = req.invite.id;
 
   if( responded > allowed ) {

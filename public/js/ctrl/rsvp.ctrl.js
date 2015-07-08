@@ -3,7 +3,7 @@ angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$s
 
     $state.transitionTo('rsvp.last');
 
-    $scope.invite = {};
+    $scope.invite;
     $scope.formData = {};
 
     $scope.search = function() {
@@ -13,10 +13,10 @@ angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$s
                 $scope.invite = data;
                 $state.transitionTo('rsvp.coming');
 
-            },function(data, status, headers){
+            }, function(data, status, headers) {
                 $state.transitionTo('error');
             });
-    }
+    };
 
     $scope.next = function(next) {
         $state.transitionTo(next);
@@ -28,5 +28,15 @@ angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$s
             options.push(i);
         }
         return options;
+    };
+
+    $scope.submit = function() {
+        InviteService
+            .update($scope.invite)
+            .then(function(data, status, headers){
+                $state.transitionTo('rsvp.thanks');
+            }, function(data, status, headers) {
+                $state.transitionTo('error');
+            });
     }
 }]);

@@ -1,5 +1,5 @@
 # MEAN RSVP
-A basic RSVP application built with the MEAN stack: MongoDB, ExpressJS, AngularJS, NodeJS.
+A simple application built with the MEAN (MongoDB, ExpressJS, AngularJS, NodeJS) stack to collect RSVPs for my wedding.
 
 ## Tools
 In order to build/run this application, it is assumed that you have the following tools installed on your system:

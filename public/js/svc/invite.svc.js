@@ -24,23 +24,23 @@ angular.module('invite.service', []).factory('InviteService', ['$http', '$q', fu
         },
 
         list : function() {
-            var res = this.api(baseUrl, 'GET');
-            return res;
+            return this.api(baseUrl, 'GET');
         },
 
         search : function(last, first) {
             const params = {last: last, first: first};
             const url = baseUrl + '/search'
-            var res = this.api(url, 'GET', params);
-            return res;
+            return this.api(url, 'GET', params);
         },
 
         get : function(id) {
-            return $http.get('/api/invites/' + id);
+            const url = baseUrl + '/' + id;
+            return this.api(url, 'GET');
         },
 
-        update : function() {
-            throw Error('Not yet implemented!');
+        update : function(invite) {
+            const url = baseUrl + '/' + invite._id;
+            return this.api(url, 'PUT', {}, invite);
         }
     }
 }]);
