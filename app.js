@@ -10,7 +10,7 @@ require('./models/Invites');
 mongoose.connect(process.env.DB_URL);
 
 var users = require('./routes/users');
-var api = require('./routes/api');
+var invites = require('./routes/invites');
 var routes = require('./routes/index');
 
 var app = express();
@@ -27,8 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/', api);
 app.use('/users', users);
+app.use('/', invites);
 app.use('/', routes);
 
 // catch 404 and forward to error handler

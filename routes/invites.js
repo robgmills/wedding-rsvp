@@ -19,7 +19,7 @@ router.param('invite', function(req, res, next, id) {
   });
 });
 
-router.get('/invites', function(req, res, next) {
+router.get('/api/invites', function(req, res, next) {
   Invite.find(function(err, invites){
     if(err){ return next(err); }
 
@@ -27,7 +27,7 @@ router.get('/invites', function(req, res, next) {
   });
 });
 
-router.get('/invites/search', function(req, res, next) {
+router.get('/api/invites/search', function(req, res, next) {
   const lastRegex = new RegExp(req.query.last, 'i');
   const firstRegex = new RegExp(req.query.first, 'i');
   Invite.findOne({'guests.last': lastRegex, 'guests.first': firstRegex}, function(err,found){
@@ -35,7 +35,7 @@ router.get('/invites/search', function(req, res, next) {
   });
 });
 
-router.post('/invites', function(req, res, next) {
+router.post('/api/invites', function(req, res, next) {
   var invite = new Invite(req.body);
 
   invite.save(function(err, invite){
@@ -45,11 +45,11 @@ router.post('/invites', function(req, res, next) {
   });
 });
 
-router.get('/invites/:invite', function(req, res) {
+router.get('/api/invites/:invite', function(req, res) {
   res.json(req.invite);
 });
 
-router.put('/invites/:invite', function(req, res, next) {
+router.put('/api/invites/:invite', function(req, res, next) {
   var body = req.body,
       responded = body.responded,
       allowed = req.invite.guests.length,
