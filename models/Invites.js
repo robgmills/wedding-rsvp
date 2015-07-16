@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var InviteSchema = new mongoose.Schema({
     guests: [
         {
-            first: String,
+            first: [String],
             last: String
         }
     ],
