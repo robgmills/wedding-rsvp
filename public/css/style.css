@@ -33,9 +33,14 @@ input, select {
   text-align: center;
 }
 
-ul
-{
+ul {
   list-style-type: none;
+  max-width: 30vh;
+  margin: 0px auto;
+}
+
+li {
+  text-align:left;
 }
 
 .container {
