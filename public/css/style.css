@@ -29,8 +29,13 @@ footer {
   width: 90vh;
 }
 
-input {
+input, select {
   text-align: center;
+}
+
+ul
+{
+  list-style-type: none;
 }
 
 .container {
@@ -47,4 +52,16 @@ input {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.btn {
+  margin-top: 2vh;
+  background-color: rgb(248,250,249);
+  border: 1px solid rgb(157,123, 49);
+}
+
+.btn:hover {
+  background-color: rgb(157,123, 49);
+  border: 1px solid rgb(157,123, 49);
+  color: rgb(248,250,249)
 }

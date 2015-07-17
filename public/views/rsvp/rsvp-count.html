@@ -1,5 +1,7 @@
-<form id="rsvp-form" ng-submit="next('rsvp.confirm')">
+<form id="rsvp-form" ng-submit="submit()">
     <label for="count">HOW MANY PEOPLE ARE IN YOUR PARTY?</label>
     <select class="form-control" name="count" id="count" ng-model="invite.responded"
-        ng-options="count for count in countOptions()" ng-change="next('rsvp.confirm')"/>
+        ng-options="count for count in countOptions()"></select>
+
+    <button type="submit" class="btn">Save</button>
 </form>
