@@ -38,6 +38,7 @@ angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$s
     };
 
     $scope.submit = function() {
+        $scope.invite.coming = true;
         InviteService
             .update($scope.invite)
             .then(function(resp){
@@ -45,5 +46,16 @@ angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$s
             }, function(resp) {
                 $state.transitionTo('error');
             });
-    }
+    };
+
+    $scope.no = function() {
+        $scope.invite.coming = false;
+        InviteService
+            .update($scope.invite)
+            .then(function(resp){
+               $state.transitionTo('rsvp.thanks');
+            }, function(resp){
+                $state.transitionTo('error');
+            });
+    };
 }]);

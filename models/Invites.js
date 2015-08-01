@@ -8,7 +8,8 @@ var InviteSchema = new mongoose.Schema({
         }
     ],
     responded: {type: Number, default: 0},
-    respondedDate: Date
+    respondedDate: Date,
+    coming: Boolean
 });
 
 mongoose.model('Invite', InviteSchema);
