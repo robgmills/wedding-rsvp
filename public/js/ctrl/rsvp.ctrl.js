@@ -1,7 +1,7 @@
 angular.module('rsvp.controller', []).controller('RsvpController', ['$scope','$state','InviteService',
     function($scope, $state, InviteService) {
 
-    $state.transitionTo('rsvp.last');
+    $state.transitionTo('rsvp.name');
 
     $scope.invite;
     $scope.formData = {};

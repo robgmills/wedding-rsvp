@@ -15,13 +15,9 @@ angular.module('rsvp-routes', []).config(['$stateProvider', '$urlRouterProvider'
             templateUrl: 'views/rsvp/rsvp-index.html',
             controller: 'RsvpController'
         })
-        .state('rsvp.last', {
-            url: '/last',
-            templateUrl: 'views/rsvp/rsvp-last.html'
-        })
-        .state('rsvp.first', {
-            url: '/first',
-            templateUrl: 'views/rsvp/rsvp-first.html'
+        .state('rsvp.name', {
+            url: '/name',
+            templateUrl: 'views/rsvp/rsvp-name.html'
         })
         .state('rsvp.notfound', {
             url: '/notfound',

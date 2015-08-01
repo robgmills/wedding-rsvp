@@ -3,13 +3,13 @@
     <ul>
         <li>
             <label>
-                <input type="radio" ng-model="formData.response" value="yes">
+                <input type="radio" ng-model="formData.response" value="yes" ng-change="next('rsvp.count')">
                 Yes!
             </label>
         </li>
         <li>
             <label>
-                <input type="radio" ng-model="formData.response" value="no">
+                <input type="radio" ng-model="formData.response" value="no" ng-change="next('rsvp.thanks')">
                 Unfortunately, we cannot attend.
             </label>
         </li>

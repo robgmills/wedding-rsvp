@@ -70,3 +70,7 @@ li {
   border: 1px solid rgb(157,123, 49);
   color: rgb(248,250,249)
 }
+
+form.name-form input {
+    display: inline-block;
+}
